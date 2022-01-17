@@ -3,16 +3,19 @@ on: push
 
 env:
   FOO_ROOT: bar on root
-  FOO_SECRET: ${{ secrets.FOO_SECRET }}
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment:
+      name: test
     env:
       FOO_JOB: bar on job
+      FOO_SECRET: ${{ secrets.FOO_SECRET }}
     steps:
       - uses: actions/checkout@v1
       - name: Test envs
         run: ./test.sh
         env:
           FOO_STEP: bar on step
+          FOO_SECRET: ${{ secrets.FOO_SECRET }}

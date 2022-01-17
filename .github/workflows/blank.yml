@@ -3,6 +3,7 @@ on: push
 
 env:
   FOO_ROOT: bar on root
+  FOO_SECRET: ${{ secrets.FOO_SECRET }}
 
 jobs:
   test:
